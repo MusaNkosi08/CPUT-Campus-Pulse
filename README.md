@@ -1,6 +1,6 @@
 # Campus Pulse
 
-Campus Pulse is a live, student-powered issue map for CPUT District Six. Its core loop is simple: report an issue, ask **“Is this still happening?”**, and let nearby students confirm or clear it. The frontend is deliberately retro-futurist: a 2016/Y2K interface with neon cyan, glass panels, scanlines, and a playful **Built with AI** identity.
+Campus Pulse is a live, student-powered issue map for CPUT District Six. Its core loop is simple: report an issue, ask **“Is this still happening?”**, and let nearby students confirm or clear it. The frontend is deliberately retro-futurist: a 2016/Y2K interface with neon cyan, glass panels, scanlines, and a playful identity.
 
 
 ## Run locally
