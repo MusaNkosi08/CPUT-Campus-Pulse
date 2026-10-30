@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Campus Pulse API",
+    "_postman_id": "d6f8b3e6-5c91-4c2f-9ae1-campus-pulse",
+    "description": "Smoke tests for the CPUT District Six live issue API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "token", "value": "" },
+    { "key": "issueId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register student",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"name\":\"Student User\",\"email\":\"student@example.com\",\"password\":\"password123\"}" },
+            "url": "{{baseUrl}}/api/auth/register"
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"email\":\"student@example.com\",\"password\":\"password123\"}" },
+            "url": "{{baseUrl}}/api/auth/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Issues",
+      "item": [
+        {
+          "name": "List live issues",
+          "request": { "method": "GET", "url": "{{baseUrl}}/api/issues" }
+        },
+        {
+          "name": "Create issue",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }, { "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\"category\":\"teaching\",\"description\":\"Projector is not turning on\",\"latitude\":-33.9309,\"longitude\":18.4258}" },
+            "url": "{{baseUrl}}/api/issues"
+          }
+        },
+        {
+          "name": "Confirm still there",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/issues/{{issueId}}/confirm"
+          }
+        },
+        {
+          "name": "Clear issue",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/api/issues/{{issueId}}/resolve"
+          }
+        }
+      ]
+    }
+  ]
+}
